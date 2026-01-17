@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Check</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="check.html">Check</a>
+        <a href="about.html">About Us</a>
+    </nav>
+
+    <h1>หน้า Check</h1>
+    <!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Teachable Machine Upload</title>
+    <style>
+        input[type="file"] {
+            display: none;
+        }
+        label {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div>Teachable Machine Image Model</div>
+
+<label for="upload-image">เลือกภาพ</label>
+<input id="upload-image" type="file" accept="image/*" onchange="loadImage(event)">
+
+<div id="label-container"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+
+<script>
+    const URL = "https://teachablemachine.withgoogle.com/models/TYCyeUC4_/";
+
+    let model;
+
+    async function init() {
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+        model = await tmImage.load(modelURL, metadataURL);
+    }
+
+    init();
+
+    function loadImage(event) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            const img = new Image();
+            img.src = reader.result;
+            img.onload = () => predict(img);
+
+</div>
+
+</body>
+</html>
